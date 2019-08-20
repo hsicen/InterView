@@ -10,8 +10,12 @@
 
 
 ## 2019.8.18
-[AppCompatTextView 与 TextView **怎么替换**，**为什么替换**](./article/viewAndAppcompatView.md "View 和 AppCompatView")
+[AppCompatTextView 与 TextView **怎么替换**，**为什么替换**？](./article/viewAndAppcompatView.md "View 和 AppCompatView")
 
 
 ## 2019.8.19
 [大家应该都有泛型在编译期会被擦除的概念，那么为什么我们在运行时还能读取到呢？](./article/generic.md "泛型擦除")
+
+
+## 2019.8.20
+[app https 抓包，一定能抓到吗？](./article/appHttpsCapture.md "Https抓包")
