@@ -6,7 +6,7 @@
 
 
 ## 2019.8.17
-[名内部类访问的外部类局部变量**为什么要用final 修饰**，**jdk8为啥不需要了**？](./article/innerFinal.md "名内部类访问的外部类局部变量")
+[ 匿名内部类访问的外部类局部变量**为什么要用final 修饰**，**jdk8为啥不需要了**？](./article/innerFinal.md "匿名内部类访问的外部类局部变量")
 
 
 ## 2019.8.18
@@ -19,3 +19,7 @@
 
 ## 2019.8.20
 [app https 抓包，一定能抓到吗？](./article/appHttpsCapture.md "Https抓包")
+
+
+## 2019.8.21
+[Android16.6ms刷新一次屏幕？](./article/appHttpsCapture.md "屏幕刷新")
