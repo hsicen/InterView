@@ -23,3 +23,7 @@
 
 ## 2019.8.21
 [Android16.6ms刷新一次屏幕？](./article/appHttpsCapture.md "屏幕刷新")
+
+
+## 2019.8.22
+[app or lib module 的R.java文件变量final修饰符？](./article/libModuleR.md "R.java文件变量修饰符")
