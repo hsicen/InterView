@@ -28,5 +28,10 @@
 ## 2019.8.22
 [app or lib module 的R.java文件变量final修饰符？](./article/libModuleR.md "R.java文件变量修饰符")
 
+
 ## 2019.8.22
 [Android消息机制](./article/messageMechanism.md "Android消息机制")
+
+
+## 2019.8.23
+[IdleHandler](./article/idleHandler.md "IdleHandler")
