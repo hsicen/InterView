@@ -16,9 +16,10 @@ import kotlin.math.abs
 
 fun main() {
 
-    var samp1 = intArrayOf(-9, -5, -4, 0, 1, 4, 5, 8)
-    samp1 = sortedSquares(samp1)
-    samp1.forEach { print("$it  ") }
+    var sample = intArrayOf(-9, -5, -4, 0, 1, 4, 5, 8)
+    sample = sortedSquares(sample)
+    sample.forEach { print("$it  ") }
+
 }
 
 
