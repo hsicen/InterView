@@ -19,7 +19,6 @@ fun main() {
     var sample = intArrayOf(-9, -5, -4, 0, 1, 4, 5, 8)
     sample = sortedSquares(sample)
     sample.forEach { print("$it  ") }
-
 }
 
 
