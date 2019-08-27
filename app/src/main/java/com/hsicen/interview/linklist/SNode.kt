@@ -6,12 +6,13 @@ package com.hsicen.interview.linklist
  * <p>作用：
  * <p>描述：单链表定义
  */
-class SNode<T>(data: T, next: SNode<T>? = null) {
+class SNode<T>(var data: T, var next: SNode<T>? = null) {
 
     /**
      * 删除指定值的结点
      */
     fun delete(data: T) {
+
 
     }
 
