@@ -10,12 +10,6 @@ package com.hsicen.interview.linklist
  * 输入: 1->2->2->1           输出: true
  */
 
-/*** 单链表结构体定义*/
-class ListNode(var data: Int) {
-    var next: ListNode? = null
-}
-
-
 /**
  * 利用半栈法实现
  * 利用快慢指针找到中间结点，同时翻转慢指针所遍历的前半部分
@@ -49,7 +43,6 @@ fun isPalindrome1(head: ListNode?): Boolean {
 
     return true
 }
-
 
 fun main() {
 

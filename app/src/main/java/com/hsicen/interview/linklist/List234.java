@@ -1,5 +1,7 @@
 package com.hsicen.interview.linklist;
 
+import java.util.Stack;
+
 /**
  * <p>作者：Hsicen  2019/8/27 8:40
  * <p>邮箱：codinghuang@163.com
@@ -37,7 +39,7 @@ public class List234 {
 
         //前后对比
         while (pre != null && slow != null) {
-            if (pre.val != slow.val) return false;
+            if (pre.data != slow.data) return false;
 
             pre = pre.next;
             slow = slow.next;
@@ -46,16 +48,33 @@ public class List234 {
         return true;
     }
 
-
     /**
-     * 单链表数据结构定义
+     * 利用栈实现回文链表的判断
+     *
+     * @param head 表头
+     * @return 是否为回文链表
      */
-    class ListNode {
-        int val;
-        ListNode next;
+    public boolean isPalindrome1(ListNode head) {
+        if (head == null || head.next == null) return true;
 
-        ListNode(int data) {
-            this.val = data;
+        ListNode fast = head;
+        ListNode slow = head;
+
+        Stack<ListNode> halfNode = new Stack<>();
+
+        //找到中间结点，前半部分入栈
+        while (fast != null && fast.next != null) {
+            halfNode.push(slow);
+            fast = fast.next.next;
+            slow = slow.next;
         }
+
+        //后半部分与栈中元素进行比较
+        while (!halfNode.isEmpty() && slow.next != null) {
+            if (slow.next.data != halfNode.pop().data) return false;
+            slow = slow.next;
+        }
+
+        return true;
     }
 }
