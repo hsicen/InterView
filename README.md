@@ -39,3 +39,8 @@
 
 ## 2019.8.24
 [Android 常见的制作圆角方案有哪几种常见方式？](./article/roundCorner.md "Android圆角")
+
+
+## 2019.8.25
+[哪些 Context调用 startActivity 需要设置NEW_TASK，为什么？](./article/contextStartActivity.md "Android启动")
+
