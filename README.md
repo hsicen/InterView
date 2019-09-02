@@ -44,3 +44,6 @@
 ## 2019.8.25
 [哪些 Context调用 startActivity 需要设置NEW_TASK，为什么？](./article/contextStartActivity.md "Android启动")
 
+
+## 2019.8.26
+[可以从哪些方面优化提升项目的编译速度？](./article/enhanceCompile.md "Android启动")
