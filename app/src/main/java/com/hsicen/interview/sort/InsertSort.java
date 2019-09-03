@@ -16,6 +16,8 @@ import java.util.Arrays;
  * 空间复杂度：O(1) 原地排序
  * 比较交换次数：逆序度
  * 稳定性：稳定排序算法
+ *
+ * 相比于冒泡排序，插入排序的赋值操作更少
  */
 public class InsertSort {
 

@@ -47,3 +47,7 @@
 
 ## 2019.8.26
 [可以从哪些方面优化提升项目的编译速度？](./article/enhanceCompile.md "Android启动")
+
+
+## 2019.8.27
+[Looper.loop为什么不会阻塞掉UI线程？](./article/mianLooper.md "主线程Looper")
