@@ -56,3 +56,6 @@
 ## 2019.8.28
 [在Activity的onResume方法中view.postRunnable能获取到View宽高吗？](./article/viewPost.md "ViewPost 解析")
 
+
+## 2019.8.29
+[在Activity的onResume方法中handler.postRunnable能获取到View宽高吗？](./article/handlerPost.md "HandlerPost 解析")

@@ -12,5 +12,4 @@ package com.hsicen.interview.linklist
 class LruLinkedList(val capacity: Int = 5) {
 
 
-
 }
