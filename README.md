@@ -50,4 +50,9 @@
 
 
 ## 2019.8.27
-[Looper.loop为什么不会阻塞掉UI线程？](./article/mianLooper.md "主线程Looper")
+[Looper.loop为什么不会阻塞掉UI线程？](./article/mainLooper.md "主线程Looper")
+
+
+## 2019.8.28
+[在Activity的onResume方法中view.postRunnable能获取到View宽高吗？](./article/viewPost.md "ViewPost ")
+

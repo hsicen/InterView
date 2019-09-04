@@ -1,7 +1,10 @@
 package com.hsicen.interview
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * <p>作者：Hsicen  2019/8/16 13:55
@@ -15,5 +18,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+        Log.d("hsc", Thread.currentThread().name)
+        tvHello.post {
+            Log.d("hsc", "${tvHello.width} * ${tvHello.height}")
+            Log.d("hsc", Thread.currentThread().name)
+        }
+
+        val handler = Handler()
+        handler.postDelayed({
+
+        }, 5000L)
     }
 }
