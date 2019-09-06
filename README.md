@@ -63,3 +63,7 @@
 
 ## 2019.8.30
 [对于代码中有大量的 if/else 你有什么优化思路？](./article/ifelse.md "if-else 优化")
+
+
+## 2019.8.31
+[getWidth,getMeasuredWidth 有什么区别?](./article/measuredWidth.md "width与measuredWidth的区别")
