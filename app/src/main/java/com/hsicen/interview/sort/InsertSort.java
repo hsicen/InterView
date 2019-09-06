@@ -11,12 +11,13 @@ import java.util.Arrays;
  * 将数组分成两个部分，有序部分和无序部分，
  * 每次取出无序数组的第一个元素，然后从后往前和有序数据进行比较找到新数据的插入位置。
  * 初始有序部分可以为数组的第一个元素
+ * 总结：每次取出无序数组的一个元素，从后往前遍历有序数组寻找插入位置
  * <p>
  * 时间复杂度：最好O(n)   最坏O(n^2)  平均O(n^2)
  * 空间复杂度：O(1) 原地排序
  * 比较交换次数：逆序度
  * 稳定性：稳定排序算法
- *
+ * <p>
  * 相比于冒泡排序，插入排序的赋值操作更少
  */
 public class InsertSort {
@@ -26,10 +27,15 @@ public class InsertSort {
         System.out.println("data = " + Arrays.toString(data));
         sort(data, 6);
         System.out.println("sort = " + Arrays.toString(data));
+
+        int[] data1 = {9, 1, 3, 5, 2, 4, 6, 3};
+        System.out.println("data1 = " + Arrays.toString(data1));
+        sort(data1, 8);
+        System.out.println("sort = " + Arrays.toString(data1));
     }
 
-    private static int[] sort(int[] data, int size) {
-        if (1 == size) return data;
+    private static void sort(int[] data, int size) {
+        if (1 == size) return;
 
         int i;  //无序数组开始下标
         int j; //有序数组最后一个元素下标
@@ -48,7 +54,5 @@ public class InsertSort {
 
             data[j + 1] = value; //插入新数据
         }
-
-        return data;
     }
 }
