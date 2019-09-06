@@ -67,3 +67,7 @@
 
 ## 2019.8.31
 [getWidth,getMeasuredWidth 有什么区别?](./article/measuredWidth.md "width与measuredWidth的区别")
+
+
+## 2019.9.1
+[对于SharedPreferences你觉得有什么优缺点？](./article/sharePreference.md "sharePreference优缺点")
