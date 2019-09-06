@@ -59,3 +59,7 @@
 
 ## 2019.8.29
 [在Activity的onResume方法中handler.postRunnable能获取到View宽高吗？](./article/handlerPost.md "HandlerPost 解析")
+
+
+## 2019.8.30
+[对于代码中有大量的 if/else 你有什么优化思路？](./article/ifelse.md "if-else 优化")
