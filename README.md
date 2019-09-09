@@ -71,3 +71,7 @@
 
 ## 2019.9.1
 [对于SharedPreferences你觉得有什么优缺点？](./article/sharePreference.md "sharePreference优缺点")
+
+
+## 2019.9.2
+[ANR的产生的原理是什么，AMS中涉及ANR的代码有哪些？](./article/anr.md "ANR")
