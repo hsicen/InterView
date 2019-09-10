@@ -6,7 +6,7 @@ import java.util.Arrays;
  * <p>作者：Hsicen  2019/9/9 20:51
  * <p>邮箱：codinghuang@163.com
  * <p>作用：
- * <p>描述：InterView
+ * <p>描述：归并排序
  */
 public class MergeSort {
 
@@ -32,12 +32,12 @@ public class MergeSort {
     private static void merge(int[] src, int start, int end) {
         if (start >= end) return;
 
-        //归
+        //递归分组
         int middle = start + (end - start) / 2;
         merge(src, start, middle);
         merge(src, middle + 1, end);
 
-        //并
+        //合并分组
         sort(src, start, middle, end);
     }
 
@@ -78,5 +78,18 @@ public class MergeSort {
         for (i = 0; i <= end - start; i++) {
             dest[start + i] = tmp[i];
         }
+    }
+
+    /**
+     * 利用哨兵合并两个数组
+     *
+     * @param dest   原数组
+     * @param start  开始下标
+     * @param middle 中间下标
+     * @param end    结束下标
+     */
+    private static void sortBySentry(int[] dest, int start, int middle, int end) {
+
+
     }
 }
