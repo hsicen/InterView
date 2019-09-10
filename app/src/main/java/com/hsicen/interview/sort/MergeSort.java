@@ -7,6 +7,13 @@ import java.util.Arrays;
  * <p>邮箱：codinghuang@163.com
  * <p>作用：
  * <p>描述：归并排序
+ * 排序思想：
+ * 首先利用递归将每个数组对半分成两个数组O(logn),直到一个元素为一个数组
+ * 然后递归合并数组，将上面递归分成的数组一层一层的合并O(n)
+ * <p>
+ * 时间复杂度：最好O(nlogn)   最坏O(nlogn)  平均O(nlogn)
+ * 空间复杂度：O(n)
+ * 稳定性：稳定排序算法
  */
 public class MergeSort {
 
@@ -32,12 +39,12 @@ public class MergeSort {
     private static void merge(int[] src, int start, int end) {
         if (start >= end) return;
 
-        //递归分组
+        //递归将每个数组对半分成两个数组O(logn),直到一个元素为一个数组
         int middle = start + (end - start) / 2;
         merge(src, start, middle);
         merge(src, middle + 1, end);
 
-        //合并分组
+        //递归合并数组，将上面递归分成的数组一层一层的合并O(n)
         sortBySentry(src, start, middle, end);
     }
 
