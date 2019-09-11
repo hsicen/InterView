@@ -2,6 +2,8 @@
   <dictionary name="HSC">
     <words>
       <w>hsicen</w>
+      <w>logn</w>
+      <w>nlogn</w>
     </words>
   </dictionary>
 </component>
