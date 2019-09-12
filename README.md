@@ -75,3 +75,7 @@
 
 ## 2019.9.2
 [ANR的产生的原理是什么，AMS中涉及ANR的代码有哪些？](./article/anr.md "ANR")
+
+
+## 2019.9.3
+[为什么属性动画移动一个控件后，目标位置仍然能响应用户事件？](./article/objectAnimator.md "ANR")
