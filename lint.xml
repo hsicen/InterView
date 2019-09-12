@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<lint>
+    <!--  忽略指定的检查-->
+    <issue id="IconMissingDensityFolder" severity="ignore" />
+
+    <!--  忽略指定文件的检查-->
+    <issue id="ObsoleteLayoutParam">
+        <ignore path="res/layout/activation.xml" />
+        <ignore path="res/layout-xlarge/activation.xml" />
+    </issue>
+
+    <!-- 更改检查问题的严重性-->
+    <issue id="HardcodedText" severity="error" />
+
+</lint>

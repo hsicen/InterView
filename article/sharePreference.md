@@ -19,4 +19,3 @@
 > - 在跨进程通讯中不去使用SharedPreferences，跨进程推荐使用MMKV
 > - 键值对不宜过多
 >
-
