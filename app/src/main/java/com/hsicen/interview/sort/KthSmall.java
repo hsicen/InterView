@@ -22,7 +22,7 @@ public class KthSmall {
             }
 
             System.out.println("data = " + Arrays.toString(tmpData));
-            System.out.println("第" + (i + 1) + "大：" + findKthSmall(tmpData, i + 1));
+            System.out.println("第" + (i + 1) + "大：" + findKthLarge(tmpData, i + 1));
             System.out.println("----------------------------------------------");
         }
     }
@@ -93,6 +93,54 @@ public class KthSmall {
         return i;
     }
 
+    private static int findKthLarge(int[] nums, int k) {
+        //边界条件判断
+        if (null == nums || 0 == nums.length || 0 >= k || k > nums.length) return -1;
+
+        int n = nums.length;
+        k = n - k;
+        quickSort(nums, 0, n - 1, k);
+        return nums[k];
+    }
+
+    private static void quickSort(int[] nums, int lo, int hi, int k) {
+        if (lo >= hi) return;
+
+        int mi = lo + (hi - lo) / 2;
+        int pivot = getPivot(nums[lo], nums[mi], nums[hi]);
+        int i = lo, j = hi;
+        while (i <= j) {
+            while (nums[i] < pivot) i++;
+            while (nums[j] > pivot) j--;
+            if (i <= j) swap(nums, i++, j--);
+        }
+
+        if (k <= i - 1) quickSort(nums, lo, i - 1, k);
+        else quickSort(nums, i, hi, k);
+    }
+
+    /**
+     * 获取a,b,c中的中间值作为轴点
+     *
+     * @param a a
+     * @param b b
+     * @param c c
+     * @return 快排轴点
+     */
+    private static int getPivot(int a, int b, int c) {
+        int max = Math.max(Math.max(a, b), c);
+        int min = Math.min(Math.min(a, b), c);
+
+        return a + b + c - max - min;
+    }
+
+    /**
+     * 交换两个数据的值
+     *
+     * @param arr 原数组
+     * @param i   下标a
+     * @param j   下标b
+     */
     private static void swap(int[] arr, int i, int j) {
         if (i == j) {
             return;

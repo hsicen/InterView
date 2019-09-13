@@ -1,4 +1,4 @@
-package com.hsicen.interview.sort;
+package com.hsicen.interview.sort.compare;
 
 import java.util.Arrays;
 
