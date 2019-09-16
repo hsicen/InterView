@@ -83,4 +83,3 @@
 
 ## 2019.9.4
 [DataBinding的优缺点？](./article/dataBinding.md "DataBinding")
-

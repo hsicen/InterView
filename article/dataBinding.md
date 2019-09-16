@@ -1,6 +1,10 @@
 # 2019.9.4
 DataBinding的优缺点？
 
+#### 前言
+> DataBinding框架并没有用其它高级的Api替代现有的Api，只是对原有Api的封装，也就是说不管是findViewById()，还是setText，click事件，DataBinding还是用findViewById这些原有Api实现的，只是把它隐藏起来了，我们开发过程中不用自己写，因为框架帮我们写了
+> 
+
 #### 起源
 >DataBinding是谷歌官方发布的一个框架(现在属于Jetpack组件)，基于页面数据直接绑定额MVVM框架，其可以直接在xml文件中给控件绑定数据，通过Binding类(和XML文件绑定)直接拿到有id的控件，页面对数据的监听可以直接修改数据就能改变页面的数据，即使页面有多处使用到(LiveData功能)；可以简绍代码中频繁出现的findViewById()问题
 >```xml
@@ -23,6 +27,16 @@ DataBinding的优缺点？
 >  </androidx.constraintlayout.widget.ConstraintLayout>
 ></layout>
 >```
+>
+
+#### 工作原理
+###### 1.改造XML
+> 我们在编写XML文件的时候，会像上面一样，需要在头部加上layout标签，layout标签中的元素由两部分组成，`data` 和 `根布局(如LinearLayout)`；其实这种xml文件写法只是一种形式，并不是什么高级Api，这个xml文件在编译的时候会被改造；编译后生成的xml文件在 `build\intermediates\data-binding-layout-out\debug` 目录下，通过对比我们发现，我们手动添加的layout，data，以及@{xxx}这些看似高级的Api用法，其实在编译后都去掉了，取代它们的是在各个绑定了@{xxx}的View添加了一个Tag，这些Tag以binding_开头，后面接一个数字；要注意，没有绑定@{xxx}的View不会添加Tag，然后在根布局里也添加了一个Tag，名字是 `layout/xxx_xxx`
+> 
+
+###### 2.绑定layout
+> 绑定layout的代码有两种，Activity里是`DataBindingUtil.setContentView()`,Fragment里是 `DataBindingUtil.inflate()`，两个方法调用后都会走到bind()这个方法，后面会通过switch判断layoutId，然后调用对应layout的xxxBinding类的bind方法；这个类是自动生成的，是对应layout的名字转成驼峰标识后加Binding后缀，比如你的layout名字为activity_main.xml，则对应的Binding类的名字为ActivityMainBinding；在这个类的实现类ActivityMainBindingImpl的构造方法中会去绑定View和Tag
+> 
 
 #### 使用中存在的问题
 ###### 1.极难进行错误定位
