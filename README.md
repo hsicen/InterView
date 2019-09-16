@@ -79,3 +79,8 @@
 
 ## 2019.9.3
 [为什么属性动画移动一个控件后，目标位置仍然能响应用户事件？](./article/objectAnimator.md "事件分发")
+
+
+## 2019.9.4
+[DataBinding的优缺点？](./article/dataBinding.md "DataBinding")
+
