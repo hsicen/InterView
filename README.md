@@ -83,3 +83,8 @@
 
 ## 2019.9.4
 [DataBinding的优缺点？](./article/dataBinding.md "DataBinding")
+
+
+## 2019.9.5
+[View中的getContext一定返回的是Activity对象吗？](./article/viewGetContext.md "ViewContext")
+

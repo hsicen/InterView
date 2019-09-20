@@ -32,13 +32,17 @@
             app:layout_constraintRight_toLeftOf="@id/tvAge"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvAge"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
             android:text="@{student.age}"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="21sp"
+            app:autoSizeMaxTextSize="32sp"
+            app:autoSizeMinTextSize="2sp"
+            app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/tvName"
             app:layout_constraintRight_toRightOf="parent"
