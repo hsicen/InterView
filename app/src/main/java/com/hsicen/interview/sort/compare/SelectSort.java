@@ -17,7 +17,7 @@ import java.util.Arrays;
  * 时间复杂度：最好O(n^2)   最坏O(n^2)  平均O(n^2)
  * 空间复杂度：O(1) 原地排序
  * 比较交换次数：逆序度
- * 稳定性：不稳定排序算法
+ * 稳定性：不稳定排序
  */
 public class SelectSort {
 

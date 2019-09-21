@@ -16,13 +16,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        tvHello.text = "你在干什么"
     }
 
     override fun onResume() {
         super.onResume()
-
 
         Log.d("hsc", Thread.currentThread().name)
         tvHello.post {
