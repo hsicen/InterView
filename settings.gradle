@@ -1,2 +1,2 @@
-include ':app', ':lib', ':databinding'
+include ':app', ':databinding'
 rootProject.name='InterView'

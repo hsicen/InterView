@@ -1,0 +1,71 @@
+ext {
+
+    //多环境服务器地址配置
+    environment = [
+            dev: [
+                    host   : "https://dev.hsc.com",
+                    analyse: "https://dev.hsc.com"
+            ],
+            tst: [
+                    host   : "https://test.hsc.com",
+                    analyse: "https://test.hsc.com"
+            ],
+            pre: [
+                    host   : "https://pre.hsc.com",
+                    analyse: "https://pre.hsc.com"
+            ],
+            prd: [
+                    host   : "https://product.hsc.com",
+                    analyse: "https://product.hsc.com"
+            ]
+    ]
+
+    //多环境Key配置
+    appKey = [
+            dev: [
+                    applicationId: "com.hsc.app.dev",
+                    umeng        : "38966ce8874f2212",
+                    weixin       : "wx38966ce8874f2212",
+                    amap         : "38966ce8874f2212",
+                    im           : "38966ce8874f2212",
+                    push         : "38966ce8874f2212"
+            ],
+            tst: [
+                    applicationId: "com.hsc.app.test",
+                    umeng        : "38966ce8874f2212",
+                    weixin       : "wx38966ce8874f2212",
+                    amap         : "38966ce8874f2212",
+                    im           : "38966ce8874f2212",
+                    push         : "38966ce8874f2212"
+            ],
+            pre: [
+                    applicationId: "com.hsc.app.pre",
+                    umeng        : "38966ce8874f2212",
+                    weixin       : "wx38966ce8874f2212",
+                    amap         : "38966ce8874f2212",
+                    im           : "38966ce8874f2212",
+                    push         : "38966ce8874f2212"
+            ],
+            prd: [
+                    applicationId: "com.hsc.app",
+                    umeng        : "38966ce8874f2212",
+                    weixin       : "wx38966ce8874f2212",
+                    amap         : "38966ce8874f2212",
+                    im           : "38966ce8874f2212",
+                    push         : "38966ce8874f2212"
+            ]
+    ]
+
+    //版本号定义
+    versions = [
+            'compileSdk'   : 28,
+            'buildTools'   : '28.0.3',
+
+            'minSdk'       : 21,
+            'targetSdk'    : 28,
+            'versonCode'   : 100,
+            'versionName'  : '1.0.0',
+
+            'kotlinVersion': '1.3.50'
+    ]
+}

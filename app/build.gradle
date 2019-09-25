@@ -3,31 +3,146 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    //多环境配置
+    flavorDimensions 'environment'
+
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    //通用性变量配置,不区分编译类型和编译环境
     defaultConfig {
         applicationId "com.hsicen.interview"
-        minSdkVersion 21
-
-        //noinspection OldTargetApi
-        targetSdkVersion 28
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
     }
 
+    //签名配置
+    signingConfigs {
+        configRelease {
+            def keystoreProps = new Properties()
+            keystoreProps.load(project.rootProject.file('keystore.properties').newDataInputStream())
+
+            keyAlias keystoreProps.getProperty("keystore.alias")
+            keyPassword keystoreProps.getProperty("keystore.password")
+            storeFile file(keystoreProps.getProperty("keystore.path"))
+            storePassword keystoreProps.getProperty("keystore.aliasPassword")
+        }
+    }
+
+    //编译类型配置
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.configRelease
+        }
+
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.configRelease
+
+            ndk {
+                abiFilters 'armeabi-v7a'
+            }
+        }
+    }
+
+    //多环境排位置
+    productFlavors {
+        //开发环境
+        dev {
+            def flavorName = 'dev'
+
+            //host配置
+            buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""
+            buildConfigField "String", "ANALYSE_URL", "\"${environment[flavorName].analyse}\""
+
+            //key配置
+            manifestPlaceholders = [
+                    APPLICATION_ID: appKey[flavorName].applicationId,
+                    AMAP_KEY      : appKey[flavorName].amap,
+                    UMENG_KEY     : appKey[flavorName].umeng,
+                    WEIXIN_KEY    : appKey[flavorName].weixin,
+                    IM_KEY        : appKey[flavorName].im,
+                    PUSH_KEY      : appKey[flavorName].push
+            ]
+        }
+
+        //测试环境
+        tst {
+            def flavorName = 'tst'
+
+            //host配置
+            buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""
+            buildConfigField "String", "ANALYSE_URL", "\"${environment[flavorName].analyse}\""
+
+            //key配置
+            manifestPlaceholders = [
+                    APPLICATION_ID: appKey[flavorName].applicationId,
+                    AMAP_KEY      : appKey[flavorName].amap,
+                    UMENG_KEY     : appKey[flavorName].umeng,
+                    WEIXIN_KEY    : appKey[flavorName].weixin,
+                    IM_KEY        : appKey[flavorName].im,
+                    PUSH_KEY      : appKey[flavorName].push
+            ]
+        }
+
+        //预发布环境
+        pre {
+            def flavorName = 'pre'
+
+            //host配置
+            buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""
+            buildConfigField "String", "ANALYSE_URL", "\"${environment[flavorName].analyse}\""
+
+            //key配置
+            manifestPlaceholders = [
+                    APPLICATION_ID: appKey[flavorName].applicationId,
+                    AMAP_KEY      : appKey[flavorName].amap,
+                    UMENG_KEY     : appKey[flavorName].umeng,
+                    WEIXIN_KEY    : appKey[flavorName].weixin,
+                    IM_KEY        : appKey[flavorName].im,
+                    PUSH_KEY      : appKey[flavorName].push
+            ]
+        }
+
+        //生成环境
+        prd {
+            def flavorName = 'prd'
+
+            //host配置
+            buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""
+            buildConfigField "String", "ANALYSE_URL", "\"${environment[flavorName].analyse}\""
+
+            //key配置
+            manifestPlaceholders = [
+                    APPLICATION_ID: appKey[flavorName].applicationId,
+                    AMAP_KEY      : appKey[flavorName].amap,
+                    UMENG_KEY     : appKey[flavorName].umeng,
+                    WEIXIN_KEY    : appKey[flavorName].weixin,
+                    IM_KEY        : appKey[flavorName].im,
+                    PUSH_KEY      : appKey[flavorName].push
+            ]
         }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlinVersion"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.android.tools.build:gradle:3.5.0'
 }

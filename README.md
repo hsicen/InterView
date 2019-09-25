@@ -88,3 +88,6 @@
 ## 2019.9.5
 [View中的getContext一定返回的是Activity对象吗？](./article/viewGetContext.md "ViewContext")
 
+
+## 2019.9.6
+[BuildConfig这个类是如何生成的？](./article/buildConfig.md "BuildConfig")
