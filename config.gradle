@@ -63,7 +63,7 @@ ext {
 
             'minSdk'       : 21,
             'targetSdk'    : 28,
-            'versonCode'   : 100,
+            'versionCode'   : 100,
             'versionName'  : '1.0.0',
 
             'kotlinVersion': '1.3.50'

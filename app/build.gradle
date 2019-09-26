@@ -54,6 +54,7 @@ android {
         //开发环境
         dev {
             def flavorName = 'dev'
+            applicationId appKey[flavorName].applicationId
 
             //host配置
             buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""
@@ -73,6 +74,7 @@ android {
         //测试环境
         tst {
             def flavorName = 'tst'
+            applicationId appKey[flavorName].applicationId
 
             //host配置
             buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""
@@ -92,6 +94,7 @@ android {
         //预发布环境
         pre {
             def flavorName = 'pre'
+            applicationId appKey[flavorName].applicationId
 
             //host配置
             buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""
@@ -111,6 +114,7 @@ android {
         //生成环境
         prd {
             def flavorName = 'prd'
+            applicationId appKey[flavorName].applicationId
 
             //host配置
             buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""

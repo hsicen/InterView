@@ -1,6 +1,4 @@
-# 2019.9.6
-BuildConfig这个类是如何生成的？
-
+# 2019.9.6  BuildConfig这个类是如何生成的？
 ### BuildConfig的用处
 程序编译成功后，会在每一个Module下的`build/generated/source/buildConfig`目录下的对应环境包里生成一个BuildConfig文件，文件内容如下：
 ```Java
@@ -63,7 +61,6 @@ android {
 			zipAlignEnabled false
 			shrinkResources false
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-			signingConfig signingConfigs.configRelease
 		}
 
 		release {
@@ -72,10 +69,6 @@ android {
 			shrinkResources true
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 			signingConfig signingConfigs.configRelease
-
-			ndk {
-				abiFilters 'armeabi-v7a'
-			}
 		}
 	}
 
@@ -282,3 +275,102 @@ repositories {
     jcenter()
 }
 ```
+
+`buildConfigField "String", "BASE_URL", "\"${environment[flavorName].host}\""`
+
+这句代码中三个参数分别表示数据类型，常量名，常量值；由于BuildConfig是通过String读取数据的，所以当常量值数据类型为String时，需要在双引号里再添加一个双引号；推荐在`gradle.properties`中定义常量值，然后直接在`build.gradle`中引用即可，因为`gradle.properties`里定义的value默认都是String，所以在定义build.gradle中可以直接使用
+
+
+### BuildConfig的生成
+
+为了能看到Gradle的源码，首先要添加以下依赖(版本跟当前项目的版本中的gradle版本一致)
+```groovy
+ implementation 'com.android.tools.build:gradle:3.5.0'
+```
+
+现在我们可以全局搜索一下关键字`BuildConfig.java`，会发现在`BuildConfigGenerator`中定义了该常量
+```java
+public static final String BUILD_CONFIG_NAME = "BuildConfig.java";
+```
+
+按住CTRL键，查看引用该常量的地方，可以发现在这个类的`generate()`方法中使用了它，来看一下精简后的代码
+```java
+public void generate() throws IOException {
+        // 创建BuildConfig.java的File对象
+        File buildConfigJava = new File(pkgFolder, BUILD_CONFIG_NAME);
+        try {
+            // 根据刚刚创建的File对象，创建JavaWriter对象，
+            // 这个对象就是用来生成java源码文件的
+            JavaWriter writer = closer.register(buildConfigJava);
+            // 写入BuildConfig顶部的文档描述
+            writer.emitJavadoc("Automatically generated file. DO NOT MODIFY")
+                    // 写入包名
+                    .emitPackage(mBuildConfigPackageName)
+                    // 定义BuildConfig类
+                    .beginType("BuildConfig", "class", PUBLIC_FINAL);
+
+            // 遍历写入在build.gradle中定义的常量
+            for (ClassField field : mFields) {
+                emitClassField(writer, field);
+            }
+            // 完成
+            writer.endType();
+        } finally {
+            closer.close();
+        }
+}
+```
+
+没错，`BuildConfig`这个类以及它里面的内容，就是在这个方法中利用square的开源项目 `javapoet - JavaWriter` 来生成的。
+
+**那么BuildConfig.java是在哪个环节中生成的呢？**
+
+> 我们可以顺藤摸瓜找到调用generate()的源头：
+>
+> GenerateBuildConfig.generate() ->
+> TaskManager.createBuildConfigTask() ->
+> (ApplicationTaskManager, LibraryTaskManager).createTasksForVariantScope -> 
+> VariantManager.createAndroidTasks() ->
+> BasePlugin.createAndroidTasks() -> 
+> BasePlugin.createTasks() ->
+> BasePlugin.basePluginApply() -> 
+> BasePlugin.apply()
+>
+> 可以看到，调用的源头就是BasePlugin的apply方法，但是要搞清楚生成BuildConfig.java的任务执行时机，还是要看ApplicationTaskManager或LibraryTaskManager的createTasksForVariantScope 方法
+>
+> ```Java
+> public void createTasksForVariantScope(@NonNull final VariantScope variantScope) {
+>         createAnchorTasks(variantScope);
+>         createCheckManifestTask(variantScope);
+> 
+>         // Add a task to publish the applicationId.
+>         createApplicationIdWriterTask(variantScope);
+> 
+>         // Add a task to process the manifest(s)
+>         createMergeApkManifestsTask(variantScope);
+> 
+>         // Add a task to create the res values
+>         createGenerateResValuesTask(variantScope);
+> 
+>         // Add a task to merge the resource folders
+>         createMergeResourcesTask(variantScope);
+> 
+>         // Add tasks to compile shader
+>         createShaderTask(variantScope);
+> 
+>         // Add a task to merge the asset folders
+>         createMergeAssetsTask(variantScope);
+> 
+>         // Add a task to create the BuildConfig class
+>         createBuildConfigTask(variantScope);
+> 
+>         createAidlTask(variantScope);
+> 
+>         // Add a compile task
+>         createCompileTask(variantScope);
+> 
+>         // Create the lint tasks, if enabled
+>         createLintTasks(variantScope);
+> }
+> ```
+> 可以看到是在createMergeResourcesTask和createMergeAssetsTask之后才执行的，完成之后，就开始生成`Aidl`文件的java代码了
