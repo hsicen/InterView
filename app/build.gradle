@@ -38,7 +38,6 @@ android {
             zipAlignEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.configRelease
         }
 
         release {
@@ -47,10 +46,6 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.configRelease
-
-            ndk {
-                abiFilters 'armeabi-v7a'
-            }
         }
     }
 
