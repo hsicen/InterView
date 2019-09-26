@@ -91,3 +91,7 @@
 
 ## 2019.9.6
 [BuildConfig这个类是如何生成的？](./article/buildConfig.md "BuildConfig")
+
+
+## 2019.9.7
+[为什么Parcelable效率比Serializable高？](./article/parcelableSerializab.md "Parcelable")

@@ -1,5 +1,4 @@
-# 2019.8.28
-在Activity的onResume方法中view.postRunnable能获取到View宽高吗？
+# 在Activity的onResume方法中view.postRunnable能获取到View宽高吗？
 >在Activity的onResume方法中view的postRunnable是能够获取到View的宽高的
 >
 >看下View.post源码(SDK28)

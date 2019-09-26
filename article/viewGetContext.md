@@ -1,5 +1,4 @@
-# 2019.9.5
-View中的getContext一定返回的是Activity对象吗？
+# View中的getContext一定返回的是Activity对象吗？
 
 > 不一定是Activity对象
 >

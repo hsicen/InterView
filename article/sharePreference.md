@@ -1,5 +1,4 @@
-# 2019.9.1
-对于SharedPreferences你觉得有什么优缺点？
+# 对于SharedPreferences你觉得有什么优缺点？
 > SharedPreferences是一个轻量级的存储类，特别适合用于保存软件配置参数
 >
 > **优点：**

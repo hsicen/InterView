@@ -1,5 +1,4 @@
-# 2019.8.18
-AppCompatTextView 与 TextView **怎么替换**，**为什么替换**
+# AppCompatTextView 与 TextView **怎么替换**，**为什么替换**
 1. compat库是如何将TextView替换为AppCompatTextVew的？
 >  TextView在运行时被替换成AppCompatTextView的前提是：该Activity必须继承自AppCompatActivity
 >  **它是怎么替换的呢？**
