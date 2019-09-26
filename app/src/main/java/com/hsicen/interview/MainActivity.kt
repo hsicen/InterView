@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         BuildConfig.BUILD_TYPE
+
+        "1".hashCode()
     }
 
     override fun onResume() {
