@@ -95,3 +95,8 @@
 
 ## 2019.9.7
 [为什么Parcelable效率比Serializable高？](./article/parcelableSerializab.md "Parcelable")
+
+
+## 2019.9.8
+[R.java的生成规则是什么？](./article/rJava.md "RJava")
+
