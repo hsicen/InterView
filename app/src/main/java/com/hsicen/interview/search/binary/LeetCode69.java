@@ -22,14 +22,14 @@ public class LeetCode69 {
 
     public static void main(String[] args) {
 
-        System.out.println("-9 的平方根为：" + mySqrt(-9));
-        System.out.println("1 的平方根为：" + mySqrt(1));
-        System.out.println("4 的平方根为：" + mySqrt(4));
-        System.out.println("8 的平方根为：" + mySqrt(8));
+        System.out.println("-9 的平方根为：" + sqrt(-9, 6));
+        System.out.println("1 的平方根为：" + sqrt(1, 5));
+        System.out.println("4 的平方根为：" + sqrt(4, 3));
+        System.out.println("8 的平方根为：" + sqrt(8, 6));
         System.out.println("9 的平方根为：" + mySqrt(9));
         System.out.println("10 的平方根为：" + mySqrt(10));
         System.out.println("24 的平方根为：" + mySqrt(24));
-        System.out.println("2147395598 的平方根为：" + mySqrt(2147395598));
+        System.out.println("2147395598 的平方根为：" + sqrt(2147395598, 7));
     }
 
     /**
@@ -59,5 +59,28 @@ public class LeetCode69 {
 
         if (high <= x / high) return high;
         return low;
+    }
+
+    /**
+     * 求一个数的平方根
+     *
+     * @param num   数
+     * @param index 保留位数
+     * @return 平方根
+     */
+    private static double sqrt(double num, int index) {
+        if (num < 0) return Double.NaN;
+        if (num == 0) return 0;
+        if (index < 0) index = 0;
+
+        double e = 1 >> index;
+        double x = num;
+        double y = (x + num / x) / 2;
+        while (Math.abs(x - y) > e) {
+            x = y;
+            y = (x + num / x) / 2;
+        }
+
+        return x;
     }
 }
